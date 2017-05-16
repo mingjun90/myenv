@@ -13,6 +13,9 @@ target_venv="py2"
 
 if [ ! -d $myenv_path/$target_python ]; then
     echo "install $target_python to locall path"
+	# on ubuntu
+	# sudo apt-get install zlib1g-dev
+	
     wget https://www.python.org/ftp/python/2.7.13/Python-2.7.13.tgz
     tar -xf Python-2.7.13.tgz
     cd $myenv_path/Python-2.7.13
