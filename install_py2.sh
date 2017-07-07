@@ -56,15 +56,29 @@ function use_guide {
 }
 
 function alias_guide {
-    echo "Add following setting into startup configuration"
+    echo "Following settings are added into startup configuration"
     echo "~/.cshrc:"
     echo "    alias $target_venv \"source $myenv_path/$target_venv/bin/activate.csh\""
     echo "~/.bashrc:"
     echo "    alias $target_venv=\"source $myenv_path/$target_venv/bin/activate\""
 }
 
+function add_alias {
+    if [ -f $HOME/.bashrc ]; then
+        cat >> $HOME/.bashrc << HEREDOC
+alias $target_venv="source $myenv_path/$target_venv/bin/activate"
+HEREDOC
+    fi
+    if [ -f $HOME/.cshrc ]; then
+        cat >> $HOME/.cshrc << HEREDOC
+alias $target_venv="source $myenv_path/$target_venv/bin/activate.csh"
+HEREDOC
+    fi
+}
+
 if [ -d $myenv_path/$target_venv/bin ];then
     echo -e "$target_venv already installed\n"
     use_guide
     alias_guide
+    add_alias
 fi
