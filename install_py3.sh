@@ -7,6 +7,7 @@ cd ~/myenv
 MYENV_PATH=`pwd`
 
 if [ ! -d $MYENV_PATH/python3.6 ]; then
+    mkdir -p $MYENV_PATH/python3.6
     echo "install python3.6 to locall path"
     wget https://www.python.org/ftp/python/3.6.0/Python-3.6.0.tgz
     tar -xf Python-3.6.0.tgz
